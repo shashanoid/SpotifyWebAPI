@@ -1,4 +1,3 @@
-#!/Users/shashwatsingh/Desktop/Spotify/venv/bin/python
 from flask import Flask, jsonify, make_response, abort
 import auth
 import spotipy
@@ -48,7 +47,7 @@ class Handler:
                     self.track_ids.append(song_id)
             except:
                 print "Nice"
-                
+
 
         return "Fetching"
 
@@ -62,7 +61,7 @@ class Handler:
             preview_url = track["preview_url"]
             artist_name = track["artists"][0]['name']
             cover_image = track["album"]["images"][0]["url"]
-            
+
             if preview_url is not None:
                 data = {'artist': artist_name, 'preview_url': preview_url,\
                         'cover_image':cover_image}
@@ -70,7 +69,7 @@ class Handler:
 
         return make_response(jsonify(self.end_data))
 
-    
+
 
 if __name__ == '__main__':
     handler = Handler()
@@ -81,8 +80,8 @@ if __name__ == '__main__':
                             handler.get_new_release_album_ids, methods=['GET'])
     handler.app.add_url_rule('/list', 'songList',\
                             handler.get_trackids, methods=['GET'])
-    
+
     #Getting tracks
     handler.app.add_url_rule('/tracks', 'tracks', handler.get_tracks, methods=["GET"])
     handler.app.run(debug=True, port=8000)
-    
+
