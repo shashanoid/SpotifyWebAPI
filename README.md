@@ -16,7 +16,9 @@ python2 app.py
 Visit the URLs in this order:
 
 -- http://localhost:8000/new
+
 -- http://localhost:8000/list
+
 -- http://localhost:8000/tracks
 
 The last link displays the required data
